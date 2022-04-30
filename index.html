@@ -6,14 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>strona o kotach</title>
     <script>
-hello="Hello World";
-console.log(hello);
-document.addEventListener("DOMContentLoaded", function() {
-    elem = document.getElementById("box");
+liczba1="3";
+liczba2=3;
+liczba3=liczba1+liczba2;
 
-    elem.innerHTML = "Hello World!!!";
+
+console.log(liczba3);
+document.addEventListener("DOMContentLoaded", function() {
+  
+const input = document.getElementById('field');
+const log = document.getElementById('box');
+
+input.addEventListener('change', updateValue);
+
+function updateValue(e) {
+  log.textContent = e.target.value;
+}
+
+
 
 });
+
+
 
 
 
@@ -21,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </script>
 </head>
 <body>
-<div id="box"></div>    
+<div id="box"></div> 
+<input id="field" type="text"/>   
 </body> 
 </html>
