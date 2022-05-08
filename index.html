@@ -56,6 +56,7 @@ function updateValue(e) {
 tabelka.addEventListener("click",gra);
 firstMove = "x";
 numberMove = 0 ;
+var p = [] ;
 function gra(e){
   numberMove++;
   console.log (e.target.id);
@@ -74,19 +75,15 @@ function gra(e){
   reset = document.getElementById("reset");
   reset.addEventListener("click",resetGame)
 function resetGame(e){
-  document.getElementById("p1").innerHTML = "";
-  document.getElementById("p2").innerHTML = "";
-  document.getElementById("p3").innerHTML = "";
-  document.getElementById("p4").innerHTML = "";
-  document.getElementById("p5").innerHTML = "";
-  document.getElementById("p6").innerHTML = "";
-  document.getElementById("p7").innerHTML = "";
-  document.getElementById("p8").innerHTML = "";
-  document.getElementById("p9").innerHTML = "";
+
+  for (x= 1 ; x < 10 ; x++){
+  document.getElementById("p"+x).innerHTML = "";
+  }
   tabelka.addEventListener("click",gra)
   document.getElementById("reset").disabled = true;
-  numberMove=0;
 }
+
+
 p1=document.getElementById("p1").innerHTML;
 p2=document.getElementById("p2").innerHTML;
 p3=document.getElementById("p3").innerHTML;
@@ -109,10 +106,10 @@ wygrana8=p3+p5+p7;
 if(wygrana1=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
-  tabelka.removeEventListener("click",gra)
-  document.getElementById("p1").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p2").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p3").innerHTML = '<div style="color:#00cc00">x</div>';
+  tabelka.removeEventListener("click",gra);
+  for (x=1;x<4; x++) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
 document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -120,9 +117,9 @@ if(wygrana2=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p4").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p6").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=4;x<7; x++) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -131,9 +128,9 @@ if(wygrana3=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p7").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p8").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p9").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=7;x<10; x++) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -142,9 +139,10 @@ if(wygrana4=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p1").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p4").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p7").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=1;x<8; x += 3) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -153,9 +151,9 @@ if(wygrana5=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p2").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p8").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=2;x<9; x += 3) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -164,9 +162,10 @@ if(wygrana6=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p3").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p6").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p9").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=3;x<10; x += 3) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -175,9 +174,10 @@ if(wygrana7=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p1").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p9").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=1;x<10; x += 4) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 }
 
@@ -186,9 +186,10 @@ if(wygrana8=="xxx"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p3").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">x</div>';
-  document.getElementById("p7").innerHTML = '<div style="color:#00cc00">x</div>';
+  for (x=3;x<8; x += 2) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">x</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały krzyżyki";
 } 
 
@@ -198,9 +199,9 @@ if(wygrana1=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p1").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p2").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p3").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=1;x<4; x++) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
@@ -208,9 +209,9 @@ if(wygrana2=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p4").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p6").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=4;x<7; x++) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
@@ -218,21 +219,22 @@ if(wygrana2=="ooo"){
 if(wygrana3=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
+  for (x=7;x<10; x++) {
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p7").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p8").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p9").innerHTML = '<div style="color:#00cc00">o</div>';
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
 
 if(wygrana4=="ooo"){
-  console.log ("wygrałes");
+  console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p1").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p4").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p7").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=1;x<8; x += 3) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
@@ -241,9 +243,10 @@ if(wygrana5=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p2").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p8").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=1;x<8; x += 3) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
@@ -252,9 +255,10 @@ if(wygrana6=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p3").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p9").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=1;x<8; x += 3) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
@@ -263,9 +267,10 @@ if(wygrana7=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p1").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p5").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p9").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=1;x<10; x += 4) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 }
 
@@ -274,9 +279,10 @@ if(wygrana8=="ooo"){
   console.log ("wygrałeś");
   reset.disabled = false ;
   tabelka.removeEventListener("click",gra)
-  document.getElementById("p3").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p2").innerHTML = '<div style="color:#00cc00">o</div>';
-  document.getElementById("p7").innerHTML = '<div style="color:#00cc00">o</div>';
+  for (x=2;x<8; x += 2) {
+    console.log(x);
+    document.getElementById("p"+x).innerHTML = '<div style="color:#00cc00">o</div>';
+  }
   document.getElementById("result").innerHTML = "Po wielkich bojach wygrały kółka";
 } 
 
