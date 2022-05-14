@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", function() {
     //  Wykonywanie funkcji dodawanie
     }
     tabelka.addEventListener("click",gra);
-    firstMove = "x";
+
+
+    firstMove = '<img class="image" src="/img/xtictactoe.png" />';
+  nameField = "x";
     numberMove = 0 ;
     var p = [] ;
     wygrana=[];
@@ -56,14 +59,15 @@ document.addEventListener("DOMContentLoaded", function() {
       targetId = document.getElementById(e.target.id);
       if (targetId.innerHTML == "") {
         targetId.innerHTML = firstMove;
-      
+         targetId.setAttribute ("name",nameField);
      
-      if(firstMove == "x"){
-        firstMove = "o";
+      if(firstMove == '<img class="image" src="/img/xtictactoe.png" />'){
+        firstMove = '<img class="image" src="/img/otictactoe.png" />';
+        nameField="o";
       }
       else {
-        firstMove = "x";
-      
+        firstMove = '<img class="image" src="/img/xtictactoe.png" />';
+      nameField="x";
       }}
       reset = document.getElementById("reset");
       reset.addEventListener("click",resetGame)
@@ -77,7 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     for(x=1;x<10;x++){
-    p[x]=document.getElementById("p"+x).innerHTML;
+
+    p[x]=document.getElementById("p"+x).getAttribute("name");
     
     }
     
@@ -92,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     function getElementP(elem,what) {
-        document.getElementById("p"+elem).innerHTML = '<div style="color:#00cc00">'+what+'</div>'
+        document.getElementById("p"+elem).innerHTML = '<img class="image" src="/img/'+what+'2tictactoe.png" />'
+
       }
 
       ////Funkcja pozwala nam na przypisanie koloru do pola o danej wartości i ustaleniu symbolu wygranego
