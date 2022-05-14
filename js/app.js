@@ -71,13 +71,16 @@ document.addEventListener("DOMContentLoaded", function() {
       }}
       reset = document.getElementById("reset");
       reset.addEventListener("click",resetGame)
+
     function resetGame(e){
-    
+    wygrana = [] ;
+    numberMove=0;
       for (x= 1 ; x < 10 ; x++){
       document.getElementById("p"+x).innerHTML = "";
       }
       tabelka.addEventListener("click",gra)
       document.getElementById("reset").disabled = true;
+      document.getElementById("result").innerHTML = "";
     }
     
     for(x=1;x<10;x++){
