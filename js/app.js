@@ -1,50 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Czekamy na wczytanie dokumentu
-    var input1 = document.getElementById('pole1');
+
     
-    // Przypisujemy input o id pole1 do zmiennej input1
-    var input2 = document.getElementById('pole2');
-    // Przypisujemy input o id pole2 do zmiennej input2
-    
-    input1.addEventListener('change', updateValue);
-    // Uruchamiamy updatevalue, kiedy zmieni się coś w polu1
-    input2.addEventListener('change', updateValue);
-    // Uruchamiamy updatevalue, kiedy zmieni się coś w polu2
+
     
     
-    
-    // Definiujemy funkcję, która przyjmuje 2 argumenty
-    function dodawanie(liczba1,liczba2) {
-    
-    log = document.getElementById("box");
-    //   Przypisujemy div o id box do zmiennej log
-    console.log(liczba1);
-    console.log(liczba2);
-    log.textContent = liczba1 + liczba2 ;
-    if(log.textContent == 'NaN'){
-      log.textContent = "to nie jest liczba";
-    } 
-    if (Number(log.textContent) < 300 ){
-       log.textContent = "ta liczba mniejsza od 300";
-    }
-    else {
-      log.textContent = "ta liczba jest wieksza od 300";
-    }
-    // Do środka diva o id box wyswietlamy sume zmiennych
-    }; 
-    
-    
-    function updateValue(e) {
-        console.log (e.target.value);
-        // Wyświetlanie wartosci jaka trafi do funkcji z pól nadsłuchiwanych
-         pole1 = parseInt(document.getElementById('pole1').value);
-         // Pobieranie wartości z pola html input o id pole1 i zamiana na wartość liczbową
-         pole2 = parseInt(document.getElementById('pole2').value);
-           // Pobieranie wartości z pola html input o id pole2 i zamiana na wartość liczbową
-        dodawanie(pole1,pole2);
-    //  Wykonywanie funkcji dodawanie
-    }
+
     tabelka.addEventListener("click",gra);
 
 
@@ -52,8 +13,15 @@ document.addEventListener("DOMContentLoaded", function() {
   nameField = "x";
     numberMove = 0 ;
     var p = [] ;
-    wygrana=[];
+  var  wygrana=[];
+  var  statystykiX = 0;
+   var statystykiO = 0;
+   document.getElementById("statystyki").innerHTML = '<div style="color:white">Krzyzyki:'+statystykiX+'<br/>Kólka:'+statystykiO+'</div>' ;
+  
     function gra(e){
+     
+
+
       numberMove++;
       console.log (e.target.id);
       targetId = document.getElementById(e.target.id);
@@ -115,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
       ///par2-drugie pole z elementów które tworzą wygraną
       ///par3-trzecie pole z elementów które tworzą wygraną
         wygrana[x]=p[par1] + p[par2] + p[par3];
+      
       //Definiuje kofigurację wygraną
         console.log(wygrana[x]);
           if (wygrana[x]== kto){
@@ -126,6 +95,8 @@ document.addEventListener("DOMContentLoaded", function() {
               getElementP(par3,"x");
               getResult("Po wielkich bojach wygrały krzyżki");
               reset.disabled = false ;
+              statystykiX++;
+
           }
           if (kto == "ooo") {
              //Jeśli konfiguracja wygrana była o to koloruj o
@@ -134,15 +105,18 @@ document.addEventListener("DOMContentLoaded", function() {
               getElementP(par3,"o");
               getResult("Po wielkich bojach wygrały kółka");
               reset.disabled = false ;
+              statystykiO++;
+
               tabelka.removeEventListener("click",gra);
 
           }
+          document.getElementById("statystyki").innerHTML = '<div style="color:white">Krzyzyki:'+statystykiX+'<br/>Kólka:'+statystykiO+'</div>' ;
+  
           }
         
       }
       
-  
-  
+     
       wynik = [];
       wynik[1] = 'xxx';
       wynik[2] = 'ooo';
@@ -344,10 +318,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // } 
     
     
-    if(numberMove==9){
-      reset.disabled = false;
-      tabelka.removeEventListener("click",gra)
-    }
+    // if(numberMove==9){
+    //   reset.disabled = false;
+    //   tabelka.removeEventListener("click",gra)
+    // }
     
     }
     
