@@ -1,4 +1,4 @@
-var pierwiastki
+var pierwiastki=[];
 
 pierwiastki[0] = ["H", "Wodór"]
 pierwiastki[1] = ["He", "Hel"]
