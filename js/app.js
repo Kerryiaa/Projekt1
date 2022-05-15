@@ -42,13 +42,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function resetGame(e){
     wygrana = [] ;
-    numberMove=0;
+    
       for (x= 1 ; x < 10 ; x++){
       document.getElementById("p"+x).innerHTML = "";
       }
-      tabelka.addEventListener("click",gra)
+      tabelka.addEventListener("click",gra);
       document.getElementById("reset").disabled = true;
       document.getElementById("result").innerHTML = "";
+      numberMove = 0 ;
     }
     
     for(x=1;x<10;x++){
@@ -68,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     function getElementP(elem,what) {
-        document.getElementById("p"+elem).innerHTML = '<img class="image" src="/img/'+what+'2tictactoe.png" />'
-
+        document.getElementById("p"+elem).innerHTML = '<img class="image" src="/img/'+what+'2tictactoe.png" />';
+       
       }
 
       ////Funkcja pozwala nam na przypisanie koloru do pola o danej wartości i ustaleniu symbolu wygranego
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
         wygrana[x]=p[par1] + p[par2] + p[par3];
       
       //Definiuje kofigurację wygraną
-        console.log(wygrana[x]);
+       // console.log(wygrana[x]);
           if (wygrana[x]== kto){
       //Sprawdza czy konfiguracja wygrana zgadza się z symbolem
             if (kto == "xxx") {
@@ -107,9 +108,13 @@ document.addEventListener("DOMContentLoaded", function() {
               reset.disabled = false ;
               statystykiO++;
 
-              tabelka.removeEventListener("click",gra);
 
           }
+          for(x=1 ; x<10 ; x++){
+            document.getElementById("p"+x).removeAttribute("name");
+
+          }
+          tabelka.removeEventListener("click",gra);
           document.getElementById("statystyki").innerHTML = '<div style="color:white">Krzyzyki:'+statystykiX+'<br/>Kólka:'+statystykiO+'</div>' ;
   
           }
@@ -131,7 +136,9 @@ document.addEventListener("DOMContentLoaded", function() {
           wygranaGry(7,wynik[x],1,5,9);
           wygranaGry(8,wynik[x],3,5,7);
       }    
-  
+  if(numberMove==9){
+    reset.disabled = false;
+  }
   
     
     // if(wygrana1=="xxx"){
