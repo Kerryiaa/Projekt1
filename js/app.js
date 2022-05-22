@@ -17,6 +17,7 @@ for (x = 0; x < container.length; x++) {
 }
 game();
 
+
 function game() {
     console.log(repeatElements);
     if (repeatElements.length >= elements.length) {
@@ -50,6 +51,7 @@ function checkElement(event) {
             elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
             // usuwa kolor z "checked" (szary), a zamiast tego dodaje z "badAnswer"(czerwony)
         }
+        event.target.value = "";
         game();
     }
 }
