@@ -1,12 +1,12 @@
 var repeatElements = [];
 container = document.getElementsByClassName("symbol");
-pierwiastek = [];
+elementsSymbol = [];
 y = 0;
 for (x = 0; x < container.length; x++) {
     if (container[x].textContent != 'DE' && container[x].textContent != 'DEL' && container[x].textContent != '57-71' && container[x].textContent != '89-103') {
-        pierwiastek[y] = container[x];
+        elementsSymbol[y] = container[x];
 
-        console.log(y + "-" + pierwiastek[y].textContent);
+        console.log(y + "-" + elementsSymbol[y].textContent);
         y++;
     }
 }
@@ -14,27 +14,27 @@ game();
 
 function game() {
     console.log(repeatElements);
-    if (repeatElements.length >= pierwiastki.length) {
+    if (repeatElements.length >= elements.length) {
         console.log("koniec gry");
     } else {
-        losuj = Math.floor(Math.random() * pierwiastki.length);
-        if (repeatElements.includes(losuj)) {
+        randomElement = Math.floor(Math.random() * elements.length);
+        if (repeatElements.includes(randomElement)) {
             game();
         } else {
-            pierwiastek[losuj].parentElement.classList.add("checked");
-            repeatElements.push(losuj)
+            elementsSymbol[randomElement].parentElement.classList.add("checked");
+            repeatElements.push(randomElement)
         }
     }
 }
 
 function checkElement(event) {
     if (event.keyCode == 13) {
-        if (event.target.value == pierwiastki[losuj][1]) {
-            pierwiastek[losuj].parentElement.classList.remove("checked");
-            pierwiastek[losuj].parentElement.classList.add("goodAnswer");
+        if (event.target.value == elements[randomElement][1]) {
+            elementsSymbol[randomElement].parentElement.classList.remove("checked");
+            elementsSymbol[randomElement].parentElement.classList.add("goodAnswer");
         } else {
-            pierwiastek[losuj].parentElement.classList.remove("checked");
-            pierwiastek[losuj].parentElement.classList.add("badAnswer");
+            elementsSymbol[randomElement].parentElement.classList.remove("checked");
+            elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
         }
         game();
     }
