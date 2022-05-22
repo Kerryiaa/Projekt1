@@ -6,7 +6,7 @@ function checkElement(event) {
   if (event.keyCode == 13){
    // console.log(event.target.value);
    if(pierwiastki[losuj][1]== event.target.value){
-  console.log("dobrze");
+  //console.log("dobrze");
   pierwiastek[losuj].parentElement.classList.remove("checked");
   pierwiastek[losuj].parentElement.classList.add("goodAnswer");
   
@@ -42,16 +42,19 @@ container = document.getElementsByClassName("symbol");
   }
 function game(){
   
-
-
-    losuj = Math.floor(Math.random() * pierwiastki.length+1);
+if(repeatElements.length >= pierwiastki.length){
+    
+} else{
+console.log(pierwiastki.length)
+console.log(repeatElements.length)
+  losuj = Math.floor(Math.random() * pierwiastki.length);
     // console.log(pierwiastki[losuj]);
   
     if(repeatElements.includes(losuj)){
 
-      console.log("powtorzylem:"+pierwiastek[losuj].textContent);
+    //  console.log("powtorzylem:"+pierwiastek[losuj].textContent);
       game();
-    }
+    } else {
  
   for(x = 0; x < pierwiastek.length; x++){
     //iteruje x dopóki nie jest zgodny z numerem pierwiastka
@@ -72,8 +75,9 @@ function game(){
 
   }
   repeatElements.push(losuj)
-  
+}
 
+}
 }
 game();
 
