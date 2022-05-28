@@ -78,3 +78,12 @@ function time() {
     game();
 }
 }
+// reset = document.getElementById("reset");
+// reset.addEventListener("click",resetGame)
+// function resetGame (){
+//     for (x=0; x<=elementsSymbol.length;x++)
+//     {
+        
+//     }
+
+// }
