@@ -34,12 +34,14 @@ function checkElement(event) {
         if (event.target.value == elements[randomElement][1]) {
             elementsSymbol[randomElement].parentElement.classList.remove("checked");
             elementsSymbol[randomElement].parentElement.classList.add("goodAnswer");
-            countDownDate = new Date().getTime() + ( 0.18 * 60 * 1000 );
+            countDownDate += ( 5 * 1000 );
+
+        
             
         } else {
             elementsSymbol[randomElement].parentElement.classList.remove("checked");
             elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
-            countDownDate = new Date().getTime() + ( 0.18 * 60 * 1000 );
+            countDownDate -=( 5 * 1000 );
         }
         event.target.value = "";
         game();
@@ -48,7 +50,7 @@ function checkElement(event) {
 
 
 // Set the date we're counting down to
-var countDownDate = new Date().getTime() + ( 0.18 * 60 * 1000 );
+var countDownDate = new Date().getTime() + ( 0.5 * 60 * 1000 );
 // Update the count down every 1 second
 var x = setInterval (time,1000);
 function time() {
@@ -69,9 +71,9 @@ function time() {
     
   // If the count down is over, write some text 
   if (distance < 0) {
-    //  clearInterval(x);
-    document.getElementById("timer").innerHTML = "Czas minął";
-    countDownDate = new Date().getTime() + (10 * 1000);
+     clearInterval(x);
+    document.getElementById("timer").innerHTML = "Koniec gry";
+    myInput.style.display = "none";
     elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
     game();
 }
