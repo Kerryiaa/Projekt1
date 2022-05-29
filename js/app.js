@@ -1,4 +1,6 @@
 var repeatElements = [];
+var stopedTime = 0 ;
+var addTime = 3000*1000 ;
 container = document.getElementsByClassName("symbol");
 elementsSymbol = [];
 y = 0;
@@ -31,11 +33,15 @@ function game() {
 
 function checkElement(event) {
     if (event.keyCode == 13) {
+        if(stopedTime != 0){
+            countDownDate = new Date().getTime() + addTime - stopedTime;
+            timerX = setInterval(timerFunction,1000); 
+        }
         if (event.target.value == elements[randomElement][1]) {
             elementsSymbol[randomElement].parentElement.classList.remove("checked");
             elementsSymbol[randomElement].parentElement.classList.add("goodAnswer");
             countDownDate += ( 5 * 1000 );
-
+            bonus();
         
             
         } else {
@@ -126,8 +132,25 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
-// }
+}
 
-// function bonus (){
- 
-// }
+function bonus(){
+   
+    randomBonus = (Math.floor(Math.random() * 3)+1)
+    console.log(randomBonus);
+    currentSlide(randomBonus);
+      if(randomBonus==1){
+                countDownDate+=(1*60*1000);
+      }
+      if(randomBonus==2){
+          now = new Date().getTime() + addTime;
+        stopedTime = now - countDownDate   ;
+        console.log(stopedTime);
+    clearInterval(timerX);
+        
+}
+if(randomBonus==3){
+    game();
+    elementsSymbol[randomElement].parentElement.classList.add("goodAnswer");
+}
+    }
