@@ -15,7 +15,7 @@ game();
 function game() {
     console.log(repeatElements);
     if (repeatElements.length >= elements.length) {
-        clearInterval(x);
+        clearInterval(timerX);
         timer.innerHTML = "Koniec gry!!!";
         console.log("koniec gry");
     } else {
@@ -52,7 +52,7 @@ function checkElement(event) {
 // Set the date we're counting down to
 var countDownDate = new Date().getTime() + ( 0.5 * 60 * 1000 );
 // Update the count down every 1 second
-var x = setInterval (time,1000);
+var timerX = setInterval (time,1000);
 function time() {
 
   // Get today's date and time
@@ -71,19 +71,63 @@ function time() {
     
   // If the count down is over, write some text 
   if (distance < 0) {
-     clearInterval(x);
+     clearInterval(timerX);
     document.getElementById("timer").innerHTML = "Koniec gry";
     myInput.style.display = "none";
+    resetButton.style.display="block";
     elementsSymbol[randomElement].parentElement.classList.add("badAnswer");
-    game();
+    // game();
 }
 }
-// reset = document.getElementById("reset");
-// reset.addEventListener("click",resetGame)
-// function resetGame (){
-//     for (x=0; x<=elementsSymbol.length;x++)
-//     {
-        
-//     }
+resetButton=document.getElementById("reset");
+resetButton.style.display="none";
+resetButton.addEventListener("click",resetFunction);
+function resetFunction(){
+    console.log("działa")
+    for (x=0; x<elementsSymbol.length; x++){
+        console.log(elementsSymbol[x])
+        elementsSymbol[x].parentElement.classList.remove("badAnswer");
+        elementsSymbol[x].parentElement.classList.remove("goodAnswer");
+        elementsSymbol[x].parentElement.classList.remove("checked");
+    }
 
+countDownDate = new Date().getTime() + ( 0.5 * 60 * 1000 );
+game();
+timerX = setInterval (time,1000);
+repeatElements = [];
+resetButton.style.display="none";
+myInput.style.display="block";
+}
+
+
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+// }
+
+// function bonus (){
+ 
 // }

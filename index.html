@@ -7,6 +7,8 @@
 
 <body>
     <div id="timer" style="text-align: center; color: silver;">text</div>
+    
+    
 
     <!--row 1-->
     <div class="container">
@@ -957,9 +959,39 @@
             <div class="num_of_ele"><small>102</small></div>
         </div>
     </div>
+    
     <div class="center">
         <input id="myInput" onkeypress="checkElement(event)" />
         <button id="reset">Reset Game</button>  
+        <div class="slideshow-container">
+              
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+              </div>
+
+            <div class="mySlides fade">
+              <img src="/img/budzik2.jpg" style="width: 180px; " >
+              <!-- <div class="text" >Dodatkowy czas</div> -->
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="/img/1stop.jpg" style="width: 180px;">
+              <!-- <div class="text">Zatrzymanie czasu</div> -->
+            </div>
+            
+            <div class="mySlides fade">
+              <img src="img/pierwiastki.jpg" style="width: 180px;">
+              <!-- <div class="text">Wybierz pierwiastek</div> -->
+            </div>
+            
+            <!-- <a class="prev" onclick="plusSlides(-1)" >❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+             -->
+            </div>
+            <br>
+        
     </div>
     <script src="../js/pierwiastki.js"></script>
     <script src="../js/autocomplete.js"></script>
